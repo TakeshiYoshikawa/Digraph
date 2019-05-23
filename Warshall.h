@@ -15,7 +15,7 @@ class Warshall{
 			for(int k = 0; k < dimension; k++){
 				for(int i = 0; i < dimension; i++){
 					for(int j = 0; j < dimension; j++){
-						G->edges[i][j] = (G->edges[i][j] || (G->edges[i][k] && G->edges[k][j]));
+						G->adjacency_matrix[i][j] = (G->adjacency_matrix[i][j] || (G->adjacency_matrix[i][k] && G->adjacency_matrix[k][j]));
 					}
 				}
 			}

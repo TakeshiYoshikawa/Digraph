@@ -12,7 +12,7 @@ class Digraph{
 		int maxVertices;
 
 	public:
-		std::vector< std::vector<int> > edges;
+		std::vector< std::vector<int> > adjacency_matrix;
 		
 		Digraph(int size){
 			number_of_vertex = 0;
@@ -26,7 +26,7 @@ class Digraph{
 
 			int rows = size;
 			int columns = size;
-			edges.resize(rows, std::vector<int>(columns, 0));
+			adjacency_matrix.resize(rows, std::vector<int>(columns, 0));
 		}
 		
 		int getNumberOfVertex(){
@@ -50,8 +50,8 @@ class Digraph{
 		void add_vertex(Vertex* vertex){
 			vertices[number_of_vertex] = vertex;
 			for (int i=0; i<maxVertices; i++){
-				edges[number_of_vertex][i] = NULL_EDGE;
-				edges[i][number_of_vertex] = NULL_EDGE;
+				adjacency_matrix[number_of_vertex][i] = NULL_EDGE;
+				adjacency_matrix[i][number_of_vertex] = NULL_EDGE;
 			}
 			number_of_vertex++;
 		}
@@ -62,10 +62,10 @@ class Digraph{
 
 			row = index_is(vertices[fromVertex]);
 			column = index_is(vertices[toVertex]);
-			edges[row][column] = weight;
+			adjacency_matrix[row][column] = weight;
 			
 			//This line is for undirected graph
-			//edges[column][row] = weight;
+			//adjacency_matrix[column][row] = weight;
 		}
 
 		int weight_is(int fromVertex, int toVertex){
@@ -74,7 +74,7 @@ class Digraph{
 
 			row = index_is(vertices[fromVertex]);
 			column = index_is(vertices[toVertex]);
-			return edges[row][column];
+			return adjacency_matrix[row][column];
 		}
 
 		int index_is(Vertex* vertex){
@@ -96,7 +96,7 @@ class Digraph{
 			for(int i = 0; i < number_of_vertex; i++){
 				std::cout << i <<  "  ";
 				for(int j = 0 ; j < number_of_vertex; j++){
-					std::cout << edges[i][j] << "   ";
+					std::cout << adjacency_matrix[i][j] << "   ";
 				}
 				std::cout << std::endl;
 			}
