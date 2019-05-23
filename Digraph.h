@@ -6,12 +6,12 @@
 class Digraph{
 	private:
 		static const int NULL_EDGE = 0;
-		std::vector<Vertex*> vertices;
 		// marks[i] is mark for vertices[i]
 		int number_of_vertex;
 		int maxVertices;
 
 	public:
+		std::vector<Vertex*> vertices;
 		std::vector< std::vector<int> > adjacency_matrix;
 		
 		Digraph(int size){
@@ -90,11 +90,11 @@ class Digraph{
 		void showGraph(){
 			std::cout << "   ";
 			for(int i = 0; i < number_of_vertex; i++)
-				std::cout << i << "   ";
+				std::cout << vertices[i]->getName() << "   ";
 			std::cout << std::endl;
 
 			for(int i = 0; i < number_of_vertex; i++){
-				std::cout << i <<  "  ";
+				std::cout << vertices[i]->getName() <<  "  ";
 				for(int j = 0 ; j < number_of_vertex; j++){
 					std::cout << adjacency_matrix[i][j] << "   ";
 				}

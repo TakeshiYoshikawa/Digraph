@@ -31,7 +31,7 @@ class DFS{
         
         void DFS_visit(int i){
             color[i] = gray;
-            std::cout << " -> " << i;
+            std::cout << " -> " << digraph->vertices[i]->getName();
             this->time++;
             found[i] = time;
             

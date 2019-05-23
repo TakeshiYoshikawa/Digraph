@@ -5,13 +5,19 @@
 
 class Vertex{
 	private:
-		int name;
+		int value;
+		std::string name;
 	public:
-		Vertex(int name){
+		Vertex(std::string name, int value){
 			this->name = name;
+			this->value = value;
 		}
 
-		int getName(){
+		int getValue(){
+			return this->value;
+		}
+
+		std::string getName(){
 			return this->name;
 		}
 };
