@@ -36,7 +36,7 @@ class DFS{
             found[i] = time;
             
             for(int j = 0; j < dim; j++){
-                if((color[j] == white) && (digraph->adjacency_matrix[i][j] == 1)){
+                if((color[j] == white) && (digraph->adjacency_matrix[i][j] != 0)){
                     DFS_visit(j);
                 }
                 

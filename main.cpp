@@ -26,7 +26,7 @@ int main(int argc, char *argv[]){
 	G->add_edge(2,3,1);
 	G->add_edge(4,0,1);
 	G->add_edge(4,2,1);
-
+	
 	Warshall* W = new Warshall(G);	
 	W->WarshallAlgorithm();	
 
