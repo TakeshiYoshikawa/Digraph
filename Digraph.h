@@ -59,8 +59,8 @@ class Digraph{
 			int row;
 			int column;
 
-			row = index_is(vertices[fromVertex]);
-			column = index_is(vertices[toVertex]);
+			row = get_index_of(vertices[fromVertex]);
+			column = get_index_of(vertices[toVertex]);
 			adjacency_matrix[row][column] = weight;
 
 			if(adjacency_matrix[row][column] != 0)
@@ -76,12 +76,12 @@ class Digraph{
 			int row;
 			int column;
 
-			row = index_is(vertices[fromVertex]);
-			column = index_is(vertices[toVertex]);
+			row = get_index_of(vertices[fromVertex]);
+			column = get_index_of(vertices[toVertex]);
 			return adjacency_matrix[row][column];
 		}
 
-		int index_is(Vertex* vertex){
+		int get_index_of(Vertex* vertex){
 			int i = 0;
 			while (i < number_of_vertex){
 				if (vertices[i] == vertex)

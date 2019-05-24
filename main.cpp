@@ -50,8 +50,8 @@ int main(int argc, char *argv[]){
 	
 	std::cout << std::endl << std::endl;
 
-	std::cout << "Out degree: " << f->get_out_degree() << std::endl;
-	std::cout << "In degree: " << f->get_in_degree();
+	std::cout << "Out degree: " << a->get_out_degree() << std::endl;
+	std::cout << "In degree: " << a->get_in_degree();
 	
 	delete G; delete dfs;
 	return 0;
