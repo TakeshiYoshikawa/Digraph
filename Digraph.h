@@ -62,14 +62,14 @@ class Digraph{
 			row = get_index_of(vertices[fromVertex]);
 			column = get_index_of(vertices[toVertex]);
 			adjacency_matrix[row][column] = weight;
+			//This line is for undirected graph
+			//adjacency_matrix[column][row] = weight;
 
 			if(adjacency_matrix[row][column] != 0)
 				vertices[column]->add_in_degree();
 			if(adjacency_matrix[row][column] != 0)
 				vertices[row]->add_out_degree();
 			
-			//This line is for undirected graph
-			//adjacency_matrix[column][row] = weight;
 		}
 
 		int weight_is(int fromVertex, int toVertex){

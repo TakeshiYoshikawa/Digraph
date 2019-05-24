@@ -23,22 +23,14 @@ int main(int argc, char *argv[]){
 	G->add_vertex(f);
 
 	G->add_edge(0,1,1);
-	G->add_edge(0,2,1);
-	G->add_edge(0,0,1);
-	G->add_edge(0,3,1);
 	G->add_edge(0,4,1);
-	G->add_edge(0,5,1);
 	G->add_edge(1,2,1);
-	G->add_edge(2,0,1);
 	G->add_edge(3,5,1);
 	G->add_edge(2,3,1);
-	G->add_edge(4,2,1);
-	G->add_edge(3,2,1);
 	G->add_edge(5,4,1);
 	G->add_edge(5,1,1);
-	G->add_edge(5,5,1);
 
-	//Warshall* W = new Warshall(G);	
+	//Warshall* W = new Warshall(G);
 	//W->WarshallAlgorithm();	
 
 	std::cout << std::endl;
