@@ -63,9 +63,9 @@ class Digraph{
 			column = index_is(vertices[toVertex]);
 			adjacency_matrix[row][column] = weight;
 
-			if(adjacency_matrix[row][column] == 1)
+			if(adjacency_matrix[row][column] != 0)
 				vertices[column]->add_in_degree();
-			if(adjacency_matrix[row][column] == 1)
+			if(adjacency_matrix[row][column] != 0)
 				vertices[row]->add_out_degree();
 			
 			//This line is for undirected graph
