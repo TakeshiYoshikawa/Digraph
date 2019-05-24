@@ -27,8 +27,8 @@ int main(int argc, char *argv[]){
 	G->add_edge(4,0,1);
 	G->add_edge(4,2,1);
 	
-	Warshall* W = new Warshall(G);	
-	W->WarshallAlgorithm();	
+	//Warshall* W = new Warshall(G);	
+	//W->WarshallAlgorithm();	
 
 	std::cout << std::endl;
 	
@@ -36,6 +36,11 @@ int main(int argc, char *argv[]){
 
 	std::cout << std::endl << "DFS path: " << std::endl;
 	DFS* dfs = new DFS(G, 0);
+	
+	std::cout << std::endl << std::endl;
+
+	std::cout << e->get_out_degree() << std::endl;
+	std::cout << e->get_in_degree();
 	
 	delete G; delete dfs;
 	return 0;

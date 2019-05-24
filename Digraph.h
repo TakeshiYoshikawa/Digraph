@@ -6,7 +6,6 @@
 class Digraph{
 	private:
 		static const int NULL_EDGE = 0;
-		// marks[i] is mark for vertices[i]
 		int number_of_vertex;
 		int maxVertices;
 
@@ -63,6 +62,11 @@ class Digraph{
 			row = index_is(vertices[fromVertex]);
 			column = index_is(vertices[toVertex]);
 			adjacency_matrix[row][column] = weight;
+
+			if(adjacency_matrix[row][column] == 1)
+				vertices[column]->add_in_degree();
+			if(adjacency_matrix[row][column] == 1)
+				vertices[row]->add_out_degree();
 			
 			//This line is for undirected graph
 			//adjacency_matrix[column][row] = weight;
