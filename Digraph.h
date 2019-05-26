@@ -4,7 +4,7 @@
 #include <vector>
 
 class Digraph{
-	private:
+	protected:
 		static const int NULL_EDGE = 0;
 		int number_of_vertex;
 		int maxVertices;
@@ -113,5 +113,13 @@ class Digraph{
 		}
 };
 
+class Graph: public Digraph{
+	public:
+		Graph(int size):Digraph(size){
+		}
+
+		~Graph(){
+		}
+};
 #endif
 
