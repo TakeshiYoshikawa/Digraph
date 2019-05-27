@@ -49,10 +49,10 @@ class DFS{
 
         ~DFS(){
             std::reverse(terminados.begin(), terminados.end());
-            std::cout << std::endl;
-            for(int i = 0; i < 6; i++){
+            for(int i = 0; i < terminados.size(); i++){
                 std::cout << "[" << terminados[i] << "]";
             }
+            std::cout << std::endl << std::endl;
         }
 };
 
