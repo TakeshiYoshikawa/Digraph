@@ -11,34 +11,25 @@ int main(int argc, char *argv[]){
 	int size = 5;
 	int option = 0;
 	std::vector<Vertex*> vertexes;
-	Digraph* digraph;
-	Graph* graph;
-	
-	while(1){
-		std::cout << "Graph size: " << std::endl;
-		//std::cin >> size;
-		std::cout << "0 - Digraph\n1 - Undirected Graph" << std::endl;
-		//std::cin >> option;
-		
-		if(option == 0){
-			digraph = new Digraph(size);
-		}
-		else{
-			graph = new Graph(size);
-		}
+	std::string name[size] = {"a","b","c","d","e"};
+	Digraph *digraph;
 
-		std::cout << "Input " << size << " vertexes";
-		for(int i = 0; i < size; i++){
-			Vertex* vertex = new Vertex(" ",i);
-			vertexes.push_back(vertex);
-			if(option == 0)
-				digraph->add_vertex(vertexes[i]);
-			else
-				graph->add_vertex(vertexes[i]);
-		}
-		digraph->showGraph();
-		break;
+	//true - Undirected Graph
+	//false - Digraph
+	digraph = new Digraph(size, true);
+
+	for (int i = 0; i < size; i++){
+		Vertex *vertex = new Vertex(name[i], i);
+		vertexes.push_back(vertex);
+		digraph->add_vertex(vertexes[i]);
 	}
+
+	digraph->add_edge(0,1,1);
+	digraph->add_edge(2,0,1);
+	digraph->add_edge(3,3,1);
+	digraph->add_edge(3,2,1);
+
+	digraph->showGraph();
 	/*
 	Digraph* digraph = new Digraph(6);
 	Vertex* a = new Vertex("a",0);

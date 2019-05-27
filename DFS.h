@@ -32,7 +32,7 @@ class DFS{
 
         void DFS_visit(int i){
             color[i] = gray;
-            std::cout << " -> " << digraph->vertices[i]->getName();
+            std::cout << " -> " << digraph->vertexes[i]->getName();
             this->time++;
             found[i] = time;
             
@@ -44,7 +44,7 @@ class DFS{
                 color[i] = black;
                 finalized[i] = time;
             }
-            terminados.push_back(digraph->vertices[i]->getName());
+            terminados.push_back(digraph->vertexes[i]->getName());
         }
 
         ~DFS(){

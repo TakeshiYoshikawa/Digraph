@@ -8,11 +8,13 @@ class Vertex{
 		int value;
 		int in_degree;
 		int out_degree;
+		int undirected_degree;
 		std::string name;
 	public:
 		Vertex(std::string name, int value){
 			this->name = name;
 			this->value = value;
+			this->undirected_degree = 0;
 			this->in_degree = 0;
 			this->out_degree = 0;
 		}
@@ -39,6 +41,14 @@ class Vertex{
 
 		int get_out_degree(){
 			return this->out_degree;
+		}
+
+		void add_undirected_degree(){
+			this->undirected_degree++;
+		}
+
+		int get_undirected_degree(){
+			return this->undirected_degree;
 		}
 };
 
