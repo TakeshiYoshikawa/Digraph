@@ -27,7 +27,11 @@ class DFS{
             found.assign(digraph->getNumberOfVertex(), 0);
             finalized.assign(digraph->getNumberOfVertex(), 0);
             predecessor.assign(digraph->getNumberOfVertex(), 0);
-            DFS_visit(start_vertex);
+            
+            for(int i = start_vertex; i < digraph->getNumberOfVertex(); i++){
+                if(color[i] == white)
+                    DFS_visit(i);
+            }
         }    
 
         void DFS_visit(int i){

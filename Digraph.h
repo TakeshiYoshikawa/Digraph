@@ -102,11 +102,11 @@ class Digraph{
 		void showGraph(){
 			std::cout << "   ";
 			for(int i = 0; i < number_of_vertex; i++)
-				std::cout << vertexes[i]->getName() << "   ";
+				//std::cout << vertexes[i]->getName() << "   ";
 			std::cout << std::endl;
 
 			for(int i = 0; i < number_of_vertex; i++){
-				std::cout << vertexes[i]->getName() <<  "  ";
+				//std::cout << vertexes[i]->getName() <<  "  ";
 				for(int j = 0 ; j < number_of_vertex; j++){
 					std::cout << adjacency_matrix[i][j] << "   ";
 				}
