@@ -13,7 +13,7 @@ protected:
 
 public:
 	std::vector<Vertex *> vertexes;
-	std::vector<std::vector<int>> adjacency_matrix;
+	std::vector<std::vector<int> > adjacency_matrix;
 
 	Digraph(int size, bool graph_type)
 	{
@@ -131,6 +131,7 @@ public:
 		}
 	}
 
+	
 	~Digraph()
 	{
 		for (int i = 0; i < number_of_vertex; i++)

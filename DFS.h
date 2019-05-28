@@ -18,12 +18,13 @@ private:
     };
     Digraph *digraph;
     std::vector<Color> color;
+
+public:
     std::vector<int> discovered;
     std::vector<int> finalized;
     std::vector<int> predecessor;
-    std::vector<std::string> terminados;
+    std::vector<std::string> topologic_order;
 
-public:
     DFS(Digraph *D)
     {
         this->digraph = D;
@@ -58,6 +59,7 @@ public:
             color[i] = black;
             finalized[i] = time;
         }
+        topologic_order.push_back(digraph->vertexes[i]->getName());
     }
 };
 

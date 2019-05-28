@@ -9,8 +9,9 @@
 class TopologicalSort
 {
 private:
-    Digraph *digraph;
-    std::queue<int> Q;;
+    Digraph* digraph;
+    DFS *dfs;
+    std::queue<int> Q;
     enum Color
     {
         white,
@@ -24,6 +25,7 @@ public:
     TopologicalSort(Digraph *d)
     {
         digraph = d;
+        dfs = new DFS(digraph);
         V = digraph->getNumberOfVertex();
     }
 
@@ -82,7 +84,7 @@ public:
             return false;
     }
 
-    void showTopologicalSort()
+    void ExecuteTopologicalSort()
     {
         if(isDAG(digraph) == true)
         {
@@ -93,6 +95,23 @@ public:
                     Q.push(i);
                 }
             }
+
+            while(!Q.empty())
+            {
+                int source = Q.front();
+                Q.pop();
+
+                dfs->init_DFS(source);
+            }
+        }
+    }
+
+    void showTopologicalSort()
+    {
+        std::reverse(dfs->topologic_order.begin(), dfs->topologic_order.end());
+        for(int i = 0; i < V; i++)
+        {
+            std::cout << "[" << dfs->topologic_order[i] << "]"; 
         }
     }
 };

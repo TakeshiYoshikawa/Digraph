@@ -41,12 +41,8 @@ int main(int argc, char *argv[])
 	//W->WarshallAlgorithm();
 	
 	//Trabalho 3 - Ordenacao Topologica
-	//DFS *dfs = new DFS(digraph);
-	//dfs->init_DFS(0);
 	TopologicalSort TS(digraph);
-	std::cout << "This graph is DAG? " << std::boolalpha << TS.isDAG(digraph) << std::endl;
+	TS.ExecuteTopologicalSort();
 	TS.showTopologicalSort();
-	//digraph->showGraph();
-
 	return 0;
 }
