@@ -45,7 +45,7 @@ public:
     void DFS_visit(int i)
     {
         color[i] = gray;
-        //std::cout << " -> " << digraph->vertexes[i]->getName();
+        std::cout << " -> " << digraph->vertexes[i]->getName();
         discovered[i] = ++time;
 
         for (int j = 0; j < dim; j++)
