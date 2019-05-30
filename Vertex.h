@@ -61,6 +61,10 @@ public:
 	{
 		return this->undirected_degree;
 	}
+
+	friend bool operator == (Vertex& v1, Vertex& v2) {
+		return v1 == v2;
+	}
 };
 
 #endif

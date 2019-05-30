@@ -6,9 +6,8 @@ class Warshall
 {
 private:
 public:
-	Digraph WarshallAlgorithm(Digraph digraph)
+	Digraph WarshallAlgorithm(Digraph graph)
 	{
-		Digraph graph = digraph;
 		for (int k = 0; k < graph.getNumberOfVertex(); k++)
 		{
 			for (int i = 0; i < graph.getNumberOfVertex(); i++)
@@ -22,12 +21,12 @@ public:
 
 		std::cout << "   ";
 		for (int i = 0; i < graph.getNumberOfVertex(); i++)
-			std::cout << graph.vertexes[i]->getName() << "   ";
+			std::cout << graph.vertices[i].getName() << "   ";
 		std::cout << std::endl;
 
 		for (int i = 0; i < graph.getNumberOfVertex(); i++)
 		{
-			std::cout << graph.vertexes[i]->getName() << "  ";
+			std::cout << graph.vertices[i].getName() << "  ";
 			for (int j = 0; j < graph.getNumberOfVertex(); j++)
 			{
 				std::cout << graph.adjacency_matrix[i][j] << "   ";
