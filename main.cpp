@@ -10,9 +10,9 @@
 
 int main(int argc, char *argv[])
 {
-	int size = 9;
+	int size = 4;
 	std::vector<Vertex *> vertexes;
-	std::string name[] = {"sho", "mei", "cal", "sap", "cin", "cam", "gra", "jaq", "rel"};
+	std::string name[] = {"0","1","2","3"};
 
 	//true - Undirected Graph
 	//false - Digraph
@@ -26,21 +26,20 @@ int main(int argc, char *argv[])
 	}
 
 	digraph.add_edge(0, 3, 1);
-	digraph.add_edge(0, 2, 1);
-	digraph.add_edge(1, 3, 1);
-	digraph.add_edge(2, 4, 1);
+	digraph.add_edge(1, 0, 1);
+	digraph.add_edge(1, 2, 1);
+	digraph.add_edge(2, 0, 1);
 	digraph.add_edge(2, 3, 1);
-	digraph.add_edge(4, 7, 1);
-	digraph.add_edge(5, 4, 1);
-	digraph.add_edge(5, 6, 1);
-	digraph.add_edge(6, 7, 1);
-		
-	//Trabalho 2 - Algoritmo de Warshall
-	// Warshall W;
-	// W.WarshallAlgorithm(digraph);
+	digraph.add_edge(3, 2, 1);
 	
-	DFS dfs(&digraph);
-	dfs.init_DFS(0);
+	digraph.showGraph();
+	
+	//Trabalho 2 - Algoritmo de Warshall
+	Warshall W;
+	W.WarshallAlgorithm(digraph);
+	
+	//DFS dfs(&digraph);
+	//dfs.init_DFS(0);
 
 	//Trabalho 3 - Ordenacao Topologica
 	// TopologicalSort TS(digraph);

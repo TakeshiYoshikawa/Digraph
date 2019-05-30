@@ -4,9 +4,11 @@
 
 class Warshall
 {
+private:
 public:
-	void WarshallAlgorithm(Digraph graph)
+	Digraph WarshallAlgorithm(Digraph digraph)
 	{
+		Digraph graph = digraph;
 		for (int k = 0; k < graph.getNumberOfVertex(); k++)
 		{
 			for (int i = 0; i < graph.getNumberOfVertex(); i++)
@@ -32,6 +34,8 @@ public:
 			}
 			std::cout << std::endl;
 		}
+		
+		return graph;
 	}
 };
 
