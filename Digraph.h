@@ -102,7 +102,7 @@ public:
 		return -1;
 	}
 	
-	int getNumberOfVertex()
+	int Size()
 	{
 		return this->number_of_vertex;
 	}

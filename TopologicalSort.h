@@ -5,28 +5,20 @@
 #include <queue>
 #include "Vertex.h"
 #include "Digraph.h"
+#include "DFS.h"
 
 class TopologicalSort
 {
 private:
-    Digraph* digraph;
-    DFS *dfs;
+    Digraph digraph;
+    DFS dfs;
     std::queue<int> Q;
-    enum Color
-    {
-        white,
-        gray,
-        black
-    };
+    enum Color{white, gray, black};
     std::vector<Color> color;
-    int V;
 
 public:
-    TopologicalSort(Digraph *d)
+    TopologicalSort(Digraph G): digraph(G), dfs(digraph)
     {
-        digraph = d;
-        dfs = new DFS(digraph);
-        V = digraph->getNumberOfVertex();
     }
 
     bool hasBackEdge(int u)
@@ -34,10 +26,10 @@ public:
         color[u] = gray;
         int vertex;
 
-        for (int j = 0; j < V; j++)
+        for (int j = 0; j < digraph.Size(); j++)
         {
             //Exist adjacency
-            if (digraph->adjacency_matrix[u][j] == 0)
+            if (digraph.adjacency_matrix[u][j] == 0)
                 continue;
 
             vertex = j;
@@ -53,14 +45,14 @@ public:
         return false;
     }
 
-    bool isDAG(Digraph *d)
+    bool isDAG(Digraph digraph)
     {
         int source_counter = 0;
         int goal_counter = 0;
 
-        color.assign(V, white);
+        color.assign(digraph.Size(), white);
 
-        for (int i = 0; i < V; i++)
+        for (int i = 0; i < digraph.Size(); i++)
         {
             if (color[i] == white)
             {
@@ -70,14 +62,14 @@ public:
                 }
             }
         }
-        for(int i = 0; i < V; i++)
+        for(int i = 0; i < digraph.Size(); i++)
         {
-            if(digraph->vertexes[i]->get_in_degree() == 0) 
+            if(digraph.vertices[i].get_in_degree() == 0) 
                 source_counter++;
-            if(digraph->vertexes[i]->get_out_degree() == 0) 
+            if(digraph.vertices[i].get_out_degree() == 0) 
                 goal_counter++;
         }
-        
+
         if((source_counter != 0) && (goal_counter != 0))
             return true;
         else
@@ -86,11 +78,11 @@ public:
 
     void ExecuteTopologicalSort()
     {
-        if(isDAG(digraph) == true)
+        if(isDAG(digraph))
         {
-            for (int i = 0; i < V; i++)
+            for (int i = 0; i < digraph.Size(); i++)
             {
-                if(digraph->vertexes[i]->get_in_degree() == 0)
+                if(digraph.vertices[i].get_in_degree() == 0)
                 {
                     Q.push(i);
                 }
@@ -101,17 +93,29 @@ public:
                 int source = Q.front();
                 Q.pop();
 
-                dfs->init_DFS(source);
+                dfs.traverse(source);
             }
+        }
+        else
+        {
+            std::cout << "This graph is not acyclic." << std::endl;
         }
     }
 
     void showTopologicalSort()
     {
-        std::reverse(dfs->topologic_order.begin(), dfs->topologic_order.end());
-        for(int i = 0; i < V; i++)
+        if(isDAG(digraph))
         {
-            std::cout << "[" << dfs->topologic_order[i] << "]"; 
+            digraph.showGraph();
+            std::reverse(dfs.topologic_order.begin(), dfs.topologic_order.end());
+            for(int i = 0; i < digraph.Size(); i++)
+            {
+                std::cout << "[" << dfs.topologic_order[i] << "]"; 
+            }
+        }
+        else
+        {
+            std::cout << "Cannot show input graph is not acyclic.";
         }
     }
 };

@@ -8,11 +8,11 @@ private:
 public:
 	Digraph WarshallAlgorithm(Digraph graph)
 	{
-		for (int k = 0; k < graph.getNumberOfVertex(); k++)
+		for (int k = 0; k < graph.Size(); k++)
 		{
-			for (int i = 0; i < graph.getNumberOfVertex(); i++)
+			for (int i = 0; i < graph.Size(); i++)
 			{
-				for (int j = 0; j < graph.getNumberOfVertex(); j++)
+				for (int j = 0; j < graph.Size(); j++)
 				{
 					graph.adjacency_matrix[i][j] = (graph.adjacency_matrix[i][j] || (graph.adjacency_matrix[i][k] && graph.adjacency_matrix[k][j]));
 				}
@@ -20,14 +20,14 @@ public:
 		}
 
 		std::cout << "   ";
-		for (int i = 0; i < graph.getNumberOfVertex(); i++)
+		for (int i = 0; i < graph.Size(); i++)
 			std::cout << graph.vertices[i].getName() << "   ";
 		std::cout << std::endl;
 
-		for (int i = 0; i < graph.getNumberOfVertex(); i++)
+		for (int i = 0; i < graph.Size(); i++)
 		{
 			std::cout << graph.vertices[i].getName() << "  ";
-			for (int j = 0; j < graph.getNumberOfVertex(); j++)
+			for (int j = 0; j < graph.Size(); j++)
 			{
 				std::cout << graph.adjacency_matrix[i][j] << "   ";
 			}
