@@ -20,7 +20,7 @@ class Vertex {
         this->out_degree = 0;
     }
 
-    int getValue() { return this->value; }
+    int index() { return this->value; }
 
     std::string getName() { return this->name; }
 

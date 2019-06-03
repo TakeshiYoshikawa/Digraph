@@ -24,7 +24,7 @@ class TopologicalSort {
 
         for (int j = 0; j < digraph.Size(); j++) {
             // Exist adjacency
-            if (digraph.adjacency_matrix[u][j] == 0) continue;
+            if (digraph.edge[u][j] == 0) continue;
 
             vertex = j;
 

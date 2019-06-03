@@ -11,7 +11,7 @@ class DFS {
     int time;
     Digraph digraph;
     static const int null = -1;
-
+    
    public:
     enum Color { white, gray, black };
     std::stack<int> finalized_order;
@@ -44,7 +44,7 @@ class DFS {
         discovered[i] = ++time;
 
         for (int j = 0; j < digraph.Size(); j++) {
-            if ((digraph.adjacency_matrix[i][j] == 1 && (color[j] == white))) {
+            if ((digraph.edge[i][j] == 1 && (color[j] == white))) {
                 predecessor[j] = i;
                 traverse(j);
             }
@@ -56,16 +56,16 @@ class DFS {
         topologic_order.push_back(digraph.vertices[i].getName());
     }
 
-    void findComponents(int i, std::vector<std::vector<int> > components) {
+    void findComponents(int i, std::vector<std::vector<int> > component, int counter) {
         color[i] = gray;
-        // component[].push_back(i);
+        
         std::cout << "[" << digraph.vertices[i].getName() << "]";
         discovered[i] = ++time;
 
         for (int j = 0; j < digraph.Size(); j++) {
-            if ((color[j] == white) && (digraph.adjacency_matrix[i][j] != 0)) {
+            if ((color[j] == white) && (digraph.edge[i][j] != 0)) {
                 predecessor[j] = i;
-                findComponents(j, components);
+                findComponents(j, component, counter);
             }
 
             color[i] = black;

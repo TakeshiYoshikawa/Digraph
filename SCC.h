@@ -6,6 +6,7 @@
 
 class SCC {
    private:
+    int counter;
     enum Color { white, gray, black };
 
    public:
@@ -13,7 +14,9 @@ class SCC {
     Digraph digraph;
     Digraph transposed;
 
-    SCC(Digraph G) : digraph(G), transposed(G) {}
+    SCC(Digraph G) : digraph(G), transposed(G) {
+        counter = 0;
+    }
 
     void Components() {
         // First, execute DFS to get finalized vertices.
@@ -33,10 +36,11 @@ class SCC {
             int vertex = path.finalized_order.top();
             path.finalized_order.pop();
 
-            if (transposedPath.color[vertex] == 0) {
+            if (transposedPath.color[vertex] == path.white) {
                 std::cout << "Component: ";
-                transposedPath.findComponents(vertex, component);
+                transposedPath.findComponents(vertex, component, counter);
                 std::cout << std::endl;
+                counter++;
             }
         }
     }

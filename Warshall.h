@@ -9,10 +9,10 @@ class Warshall {
     	for (int k = 0; k < graph.Size(); k++) {
             for (int i = 0; i < graph.Size(); i++) {
                 for (int j = 0; j < graph.Size(); j++) {
-                    graph.adjacency_matrix[i][j] =
-                        (graph.adjacency_matrix[i][j] ||
-                         (graph.adjacency_matrix[i][k] &&
-                          graph.adjacency_matrix[k][j]));
+                    graph.edge[i][j] =
+                        (graph.edge[i][j] ||
+                         (graph.edge[i][k] &&
+                          graph.edge[k][j]));
                 }
             }
         }
@@ -25,7 +25,7 @@ class Warshall {
         for (int i = 0; i < graph.Size(); i++) {
             std::cout << graph.vertices[i].getName() << "  ";
             for (int j = 0; j < graph.Size(); j++) {
-                std::cout << graph.adjacency_matrix[i][j] << "   ";
+                std::cout << graph.edge[i][j] << "   ";
             }
             std::cout << std::endl;
         }

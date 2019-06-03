@@ -14,7 +14,8 @@ class Digraph {
 
    public:
     std::vector<Vertex> vertices;
-    std::vector<std::vector<int> > adjacency_matrix;
+    std::vector<std::vector<int> > edge;
+    std::vector<std::vector<int> > weight;
 
     Digraph(int size, bool graph_type) : vertices(size, Vertex("", 0)) {
         number_of_vertex = 0;
@@ -23,14 +24,16 @@ class Digraph {
 
         int rows = size;
         int columns = size;
-        adjacency_matrix.resize(rows, std::vector<int>(columns, 0));
+
+        edge.resize(rows, std::vector<int>(columns, 0));
+        weight.resize(rows, std::vector<int>(columns, 0));
     }
 
     void Transpose() {
         for (int i = 0; i < number_of_vertex; i++) {
             for (int j = 0; j < number_of_vertex; j++) {
                 if (i < j)
-                    std::swap(adjacency_matrix[i][j], adjacency_matrix[j][i]);
+                    std::swap(edge[i][j], edge[j][i]);
             }
         }
     }
@@ -38,8 +41,8 @@ class Digraph {
     void add_vertex(Vertex vertex) {
         vertices[number_of_vertex] = vertex;
         for (int i = 0; i < maxVertices; i++) {
-            adjacency_matrix[number_of_vertex][i] = NULL_EDGE;
-            adjacency_matrix[i][number_of_vertex] = NULL_EDGE;
+            edge[number_of_vertex][i] = NULL_EDGE;
+            edge[i][number_of_vertex] = NULL_EDGE;
         }
         number_of_vertex++;
     }
@@ -51,18 +54,20 @@ class Digraph {
         row = get_index_of(vertices[fromVertex]);
         column = get_index_of(vertices[toVertex]);
 
-        adjacency_matrix[row][column] = weight;
+        edge[row][column] = 1;
+        this->weight[row][column] = weight;
 
         if (isDigraph) {
-            if (adjacency_matrix[row][column] != 0)
+            if (edge[row][column] != 0)
                 vertices[column].add_in_degree();
-            if (adjacency_matrix[row][column] != 0)
+            if (edge[row][column] != 0)
                 vertices[row].add_out_degree();
         }
 
         // Form to determine in and out degree on a digraph.
         if (!isDigraph) {
-            adjacency_matrix[column][row] = weight;
+            edge[column][row] = 1;
+            this->weight[column][row] = weight;
             vertices[row].add_undirected_degree();
             vertices[column].add_undirected_degree();
         }
@@ -77,7 +82,7 @@ class Digraph {
         for (int i = 0; i < number_of_vertex; i++) {
             std::cout << vertices[i].getName() << "  ";
             for (int j = 0; j < number_of_vertex; j++) {
-                std::cout << adjacency_matrix[i][j] << "   ";
+                std::cout << edge[i][j] << "   ";
             }
             std::cout << std::endl;
         }
@@ -86,7 +91,7 @@ class Digraph {
     int get_index_of(Vertex vertex) {
         int i = 0;
         while (i < number_of_vertex) {
-            if (vertices[i].getValue() == vertex.getValue()) return i;
+            if (vertices[i].index() == vertex.index()) return i;
             i++;
         }
         return -1;
@@ -108,13 +113,13 @@ class Digraph {
             return false;
     }
 
-    int weight_is(int fromVertex, int toVertex) {
+    int weightBetween(int fromVertex, int toVertex) {
         int row;
         int column;
 
         row = get_index_of(vertices[fromVertex]);
         column = get_index_of(vertices[toVertex]);
-        return adjacency_matrix[row][column];
+        return weight[row][column];
     }
 };
 
