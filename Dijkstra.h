@@ -1,80 +1,57 @@
 #ifndef DIJKSTRA_H_
 #define DIJKSTRA_H_
-#include <limits>
 #include <functional>
+#include <limits>
 
-typedef std::pair<int,int> distVertex;
+typedef std::pair<int, int> distVertex;
 
 class Dijkstra {
    private:
    public:
-    int minimum;
     const int infinity = 9999;
     const int nil = -1;
-    std::vector<int> distance;
     std::vector<int> predecessor;
+    std::vector<int> distance;
+    std::vector<Vertex> S;
     Digraph graph;
 
-    //ok
-    Dijkstra(Digraph G) : graph(G){
+    Dijkstra(Digraph G) : graph(G) {
         distance.assign(graph.Size(), infinity);
-    }
-
-    //ok
-    void initializeSource(int source) {
-        for (int i = 0; i < graph.Size(); i++) {
-            predecessor.push_back(nil);
-        }
-        distance[source] = 0;
-    }
-
-    //ok
-    void relax(int u, int v) {
-        if (distance[v] > distance[u] + graph.weight[u][v]) {
-            distance[v] = distance[u] + graph.weight[u][v];
-            predecessor[v] = u;
-        }
-    }
-
-    int extractMin() {
-        this->minimum = distance[0];
-        int minimum_index = 0;
-
-        for (int index = 0; index < distance.size(); index++) {
-            if (distance[index] < minimum) {
-                distance[index] = minimum;
-     
-                // Stores index from distance with shortest value.
-                minimum_index = index;
-            }
-        }
-        return minimum_index;
+        predecessor.assign(graph.Size(), nil);
     }
 
     void shortestPath(int source) {
-        initializeSource(source);
-        
-        std::vector<Vertex> S;
+        // This PQ syntax uses minimum heap logic on stored data.
+        std::priority_queue<distVertex, std::vector<distVertex>,
+                            std::greater<distVertex> >
+            min_distance;
 
-        std::vector<Vertex> Q = graph.vertices;
+        min_distance.push(std::make_pair(0, source));
+        distance[source] = 0;
 
-        while (!Q.empty()) {
-            int u = extractMin();
-            std::cout << "[" <<  u << "]";
-            
-            // S.push_back(Q[u]);
+        while (!min_distance.empty()) {
+            // Minimum heap secures the minimum distance is processed first.
+            int u = min_distance.top().second;
 
-            std::vector<Vertex>::iterator it = Q.begin() + u;
-            Q.erase(it);
-            
-            for (int v = 0; v < 5; v++) {
-                relax(u, v);
+            min_distance.pop();
+
+            for (int v = 0; v < graph.Size(); v++) {
+                if(graph.edge[u][v] == 0){
+                    continue;
+                }
+                if (distance[v] > (distance[u] + graph.weight[u][v])) {
+                    distance[v] = distance[u] + graph.weight[u][v];
+                    predecessor[v] = u;
+                    min_distance.push(std::make_pair(distance[v], v));
+                }
             }
         }
 
-        // for (int i : distance) {
-        //     std::cout << "[" << i << "]";
-        // }
+        for (int i = 0; i < graph.Size(); i++) {
+            std::cout << "(" << graph.vertices[source].getName() << "," << graph.vertices[i].getName()
+                      << ") - " << distance[i] 
+                      << std::endl;
+        }
     }
 };
 

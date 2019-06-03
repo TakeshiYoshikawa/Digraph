@@ -39,6 +39,7 @@ int main(int argc, char *argv[]) {
     digraph.add_edge(3, 4, 2);
     digraph.add_edge(4, 0, 7);
     digraph.add_edge(4, 2, 6);
+    digraph.showGraph();
     // Trabalho 2 - Algoritmo de Warshall
     // Warshall W;
     // W.WarshallAlgorithm(digraph);
@@ -54,6 +55,6 @@ int main(int argc, char *argv[]) {
 
     // Trabalho 5 - Definir o menor caminho e a rota resultante por Dijkstra.
     Dijkstra dijkstra(digraph);
-    dijkstra.shortestPath(0);
+    dijkstra.shortestPath(4);
     return 0;
 }
