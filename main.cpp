@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
     // 					  "jaqueta", "camisa", "gravata",
     // 					  "meia", "sapato", "relogio"};
 
-    std::vector<std::string> name = {"s", "u", "v", "x", "y"};
+std::vector<std::string> name = {"0","1","2","3","4","5","6","7","8","9"};
 
     // true - Digraph // false - Undirected Digraph
     Digraph digraph(name.size(), true);
@@ -29,32 +29,35 @@ int main(int argc, char *argv[]) {
                   << vertices[i].index() << std::endl;
     }
 
-    digraph.add_edge(0, 1, 10);
-    digraph.add_edge(0, 3, 5);
-    digraph.add_edge(1, 2, 1);
-    digraph.add_edge(1, 3, 2);
-    digraph.add_edge(2, 4, 4);
-    digraph.add_edge(3, 1, 3);
-    digraph.add_edge(3, 2, 9);
-    digraph.add_edge(3, 4, 2);
-    digraph.add_edge(4, 0, 7);
-    digraph.add_edge(4, 2, 6);
+    digraph.add_edge(0, 5, 1);
+    digraph.add_edge(0, 6, 1);
+    digraph.add_edge(1, 4, 1);
+    digraph.add_edge(2, 6, 1);
+    digraph.add_edge(2, 9, 1);
+    digraph.add_edge(3, 7, 1);
+    digraph.add_edge(3, 8, 1);
+    digraph.add_edge(4, 9, 1);
+    digraph.add_edge(5, 2, 1);
+    digraph.add_edge(6, 4, 1);
+    digraph.add_edge(7, 8, 1);
     digraph.showGraph();
+    
     // Trabalho 2 - Algoritmo de Warshall
-    // Warshall W;
-    // W.WarshallAlgorithm(digraph);
+    Warshall W;
+    W.WarshallAlgorithm(digraph);
 
     // Trabalho 3 - Ordenacao Topologica
-    // TopologicalSort path(digraph);
-    // path.ExecuteTopologicalSort();
-    // path.showTopologicalSort();
+    TopologicalSort path(digraph);
+    path.ExecuteTopologicalSort();
+    path.showTopologicalSort();
 
     // Trabalho 4 - Componentes Fortemente Conectados (SCC)
-    // SCC scc(digraph);
-    // scc.Components();
+    SCC scc(digraph);
+    scc.Components();
 
     // Trabalho 5 - Definir o menor caminho e a rota resultante por Dijkstra.
     Dijkstra dijkstra(digraph);
-    dijkstra.shortestPath(4);
+    dijkstra.shortestPath(0);
+
     return 0;
 }

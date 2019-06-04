@@ -16,7 +16,7 @@ class Warshall {
                 }
             }
         }
-
+        std::cout << "Transitive Closure" << std::endl;
         std::cout << "   ";
         for (int i = 0; i < graph.Size(); i++)
             std::cout << graph.vertices[i].getName() << "   ";

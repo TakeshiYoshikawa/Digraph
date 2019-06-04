@@ -74,6 +74,7 @@ class Digraph {
     }
 
     void showGraph() {
+        std::cout << "Adjancency Matrix" << std::endl;
         std::cout << "   ";
         for (int i = 0; i < number_of_vertex; i++)
             std::cout << vertices[i].getName() << "   ";

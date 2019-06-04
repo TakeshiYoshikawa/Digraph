@@ -46,11 +46,27 @@ class Dijkstra {
                 }
             }
         }
+        showPath(source);
+    }
 
-        for (int i = 0; i < graph.Size(); i++) {
-            std::cout << "(" << graph.vertices[source].getName() << "," << graph.vertices[i].getName()
-                      << ") - " << distance[i] 
-                      << std::endl;
+    void printPath(int vertex){
+        if(predecessor[vertex] == -1){
+            return;
+        }
+        printPath(predecessor[vertex]);
+        std::cout << " - " << graph.vertices[vertex].getName();
+    }
+
+    void showPath(int source){
+        std::cout << "Dijkstra Shortest Path" << std::endl;
+        std::cout << "Vertex\tDistance\tPath";
+
+        for(int i = 1; i < graph.Size(); i++){
+            std::cout << std::endl << graph.vertices[source].getName() 
+            << " -> " << graph.vertices[i].getName() << "\t\t" << distance[i]
+            << "\t\t" << graph.vertices[source].getName(); 
+            
+            printPath(i);
         }
     }
 };

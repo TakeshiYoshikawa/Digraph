@@ -82,15 +82,18 @@ class TopologicalSort {
 
     void showTopologicalSort() {
         if (isDAG(digraph)) {
-            digraph.showGraph();
             std::reverse(dfs.topologic_order.begin(),
                          dfs.topologic_order.end());
+            std::cout << "Topologic Sort" << std::endl;
             for (int i = 0; i < digraph.Size(); i++) {
                 std::cout << "[" << dfs.topologic_order[i] << "]";
             }
+            std::cout << std::endl;
         } else {
-            std::cout << "Cannot show input graph is not acyclic.";
+            std::cout << "Cannot show input graph is not acyclic." << std::endl;
         }
+        digraph.showGraph();
+        std::cout << std::endl;
     }
 };
 
