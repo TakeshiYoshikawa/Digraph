@@ -7,10 +7,9 @@ int main(int argc, char *argv[]) {
     // Estrutura sem formato de menu.
     // std::vector<Vertex> vertices;
 
-    // std::vector<std::string> name = {"1", "2", "3", "4", "5",
-    //                                  "6", "7", "8", "9"};
-    // // true - Digraph
-    // // false - Undirected Digraph
+    // std::vector<std::string> name = {"short","meia","calca","sapato","cinto","camisa","gravata","jaqueta","relogio"};
+    // true - Digraph
+    // false - Undirected Digraph
     // Digraph digraph(name.size(), true);
 
     // for (int i = 0; i < name.size(); i++) {
@@ -21,26 +20,24 @@ int main(int argc, char *argv[]) {
     //               << vertices[i].index() << std::endl;
     // }
 
-    // digraph.add_edge(0, 1, 1);
-    // digraph.add_edge(1, 3, 1);
-    // digraph.add_edge(2, 7, 1);
-    // digraph.add_edge(3, 4, 1);
-    // digraph.add_edge(4, 1, 1);
-    // digraph.add_edge(5, 2, 1);
-    // digraph.add_edge(5, 8, 1);
-    // digraph.add_edge(6, 1, 1);
-    // digraph.add_edge(6, 5, 1);
-    // digraph.add_edge(7, 2, 1);
-    // digraph.add_edge(8, 5, 1);
+    // digraph.add_edge(0,2,1);
+    // digraph.add_edge(0,3,1);
+    // digraph.add_edge(1,3,1);    
+    // digraph.add_edge(2,3,1);
+    // digraph.add_edge(2,4,1);
+    // digraph.add_edge(4,7,1);
+    // digraph.add_edge(5,4,1);
+    // digraph.add_edge(5,6,1);
+    // digraph.add_edge(6,7,1);
 
     // // Trabalho 2 - Algoritmo de Warshall
     // // Warshall W;
     // // W.WarshallAlgorithm(digraph);
 
     // // Trabalho 3 - Ordenacao Topologica
-    // // TopologicalSort path(digraph);
-    // // path.ExecuteTopologicalSort();
-    // // path.showTopologicalSort();
+    // TopologicalSort path(digraph);
+    // path.ExecuteTopologicalSort();
+    // path.showTopologicalSort();
 
     // // Trabalho 4 - Componentes Fortemente Conectados (SCC)
     // SCC scc(digraph);
