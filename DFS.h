@@ -55,25 +55,6 @@ class DFS {
         finalized_order.push(i);
         topologic_order.push_back(digraph.vertices[i].getName());
     }
-
-    void findComponents(int i, std::vector<std::vector<int> > component, int counter) {
-        color[i] = gray;
-        
-        std::cout << "[" << digraph.vertices[i].getName() << "]";
-        discovered[i] = ++time;
-
-        for (int j = 0; j < digraph.Size(); j++) {
-            if ((color[j] == white) && (digraph.edge[i][j] != 0)) {
-                predecessor[j] = i;
-                findComponents(j, component, counter);
-            }
-
-            color[i] = black;
-            finalized[i] = time;
-        }
-        finalized_order.push(i);
-        topologic_order.push_back(digraph.vertices[i].getName());
-    }
 };
 
 #endif
