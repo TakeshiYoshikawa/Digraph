@@ -19,6 +19,12 @@ class Opcao {
         std::vector<Vertex> vertices;
         std::vector<std::string> name;
         std::string vertex_name;
+        int fromVertex;
+        int toVertex;
+        int weight;
+        int graph_type;
+        bool key;
+        int algorithm_option;
 
         std::cout << "Escreva o nome dos vertices do grafo no formato de "
                      "string, a quantidade sera definida pelo numero de "
@@ -37,8 +43,6 @@ class Opcao {
                   << "1 - Direcionado (Digrafo)." << std::endl
                   << "0 - Nao direcionado." << std::endl;
 
-        int graph_type;
-        bool key;
         std::cin >> graph_type;
 
         if (graph_type == 1) {
@@ -63,30 +67,53 @@ class Opcao {
             << "Insira tres indices para definir as arestas do grafo e o peso "
                "da aresta, por exemplo: 0  1  15. Para encerrar digite -1 -1 -1"
             << std::endl;
-        int fromVertex;
-        int toVertex;
-        int weight;
+
         while (1) {
-            std::cout << "Vertice de origem:" << std::endl;
-            std::cin >> fromVertex; 
-            std::cout << "Vertice de destino:" << std::endl;
-            std::cin >> toVertex; 
-            std::cout << "Peso:" << std::endl;
+            std::cout << "Vertice de origem:";
+            std::cin >> fromVertex;
+            std::cout << "Vertice de destino:";
+            std::cin >> toVertex;
+            std::cout << "Peso:";
             std::cin >> weight;
-            std::cin.ignore(512, '\n');
+
             if ((fromVertex == -1) && (toVertex == -1) && (weight == -1)) {
                 break;
-            }
-            
-            if ((fromVertex > name.size()) || (toVertex > name.size())) {
-                std::cout
-                    << "Indice ultrapassando o limite do grafo. Abortagem"
-                    << std::endl;
+            } else if ((fromVertex > name.size()) || (toVertex > name.size())) {
+                std::cout << "Indice ultrapassando o limite do grafo. Abortagem"
+                          << std::endl;
                 break;
             }
             graph.add_edge(fromVertex, toVertex, weight);
         }
-        graph.showGraph();
+
+        while (1) {
+            std::cout << "\nSelecione um algoritmo." << std::endl;
+            std::cout << "1 - Warshall\n2 - Ordenação Topológica\n3 - "
+                         "Componentes Fortemente Conectados\n4 - Menor "
+                         "caminho (Dijkstra)\n5 - Mostrar grafo\n6 - Encerrar"
+                      << std::endl;
+
+            std::cout << "Escolha o algoritmo: ";
+            std::cin >> algorithm_option;
+            if (algorithm_option == 1) {
+                Warshall W;
+                W.WarshallAlgorithm(graph);
+            } else if (algorithm_option == 2) {
+                TopologicalSort path(graph);
+                path.ExecuteTopologicalSort();
+            } else if (algorithm_option == 3) {
+                SCC scc(graph);
+                scc.Components();
+                scc.showComponents();
+            } else if (algorithm_option == 4) {
+                Dijkstra dijkstra(graph);
+                dijkstra.shortestPath(0);
+            } else if (algorithm_option == 5) {
+                graph.showGraph();
+            } else if (algorithm_option == 6) {
+                break;
+            }
+        }
     }
 };
 }  // namespace Menu

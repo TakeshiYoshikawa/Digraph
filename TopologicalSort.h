@@ -75,6 +75,7 @@ class TopologicalSort {
 
                 dfs.traverse(source);
             }
+            showTopologicalSort();
         } else {
             std::cout << "This graph is not acyclic." << std::endl;
         }
