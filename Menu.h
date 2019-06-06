@@ -93,7 +93,7 @@ class Opcao {
                          "caminho (Dijkstra)\n5 - Mostrar grafo\n6 - Encerrar"
                       << std::endl;
 
-            std::cout << "Escolha o algoritmo: ";
+            std::cout << "\nEscolha o algoritmo: ";
             std::cin >> algorithm_option;
             if (algorithm_option == 1) {
                 Warshall W;
