@@ -9,9 +9,8 @@ int main(int argc, char *argv[]) {
     std::cout << "Grafo pré-definido no código fonte" << std::endl;
 
     // Altere o vetor de nomes, alguns exemplos disponíveis para teste imediato.
-    std::vector<std::string> name = {"short",   "meia",    "calca",
-                                     "sapato",  "cinto",   "camisa",
-                                     "gravata", "jaqueta", "relogio"};
+    std::vector<std::string> name = {"a","b","c","d","e","f"};
+
 
     Digraph digraph(name.size(), true);
     for (int i = 0; i < name.size(); i++) {
@@ -26,15 +25,15 @@ int main(int argc, char *argv[]) {
     Definição das arestas, alguns arquivos de exemplo na pasta graph_example
     já possuem exemplos prontos.
     */
-    digraph.add_edge(0, 2, 1);
-    digraph.add_edge(0, 3, 1);
-    digraph.add_edge(1, 3, 1);
-    digraph.add_edge(2, 3, 1);
-    digraph.add_edge(2, 4, 1);
-    digraph.add_edge(4, 7, 1);
-    digraph.add_edge(5, 4, 1);
-    digraph.add_edge(5, 6, 1);
-    digraph.add_edge(6, 7, 1);
+    digraph.add_edge(0,3,1);
+    digraph.add_edge(0,2,1);
+    digraph.add_edge(1,0,1);
+    digraph.add_edge(1,2,1);
+    digraph.add_edge(2,4,1);
+    digraph.add_edge(3,0,1);
+    digraph.add_edge(3,5,1);
+    digraph.add_edge(4,1,1);
+    digraph.add_edge(5,5,1);
 
     digraph.showGraph();
 
