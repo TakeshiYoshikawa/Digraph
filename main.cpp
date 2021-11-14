@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Menu.h"
+#include "src/Menu.h"
 
 int main(int argc, char *argv[]) {
     int option;
